@@ -1,23 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import Location from './components/Location';
+import Loader from './components/Loader';
+import ryckandmortytitle from './images/ryckandmorty-title.png';
+import { useState } from 'react';
+import useAxiosLocation from './hooks/useAxiosLocation';
+import ResidentInfo from './components/ResidentInfo';
+import useSuggestion from './hooks/useSuggestion';
 
 function App() {
+
+  const [inputValue, setInputValue] = useState('');
+  const { location } = useAxiosLocation(inputValue);
+
+  const { handlerInput, searchLocation, setHandlerInput } = useSuggestion();
+  const [mod, setMod] = useState(false);
+
+  console.log(handlerInput);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+      <Loader />
+
+      <header>
+        <img src={ryckandmortytitle} alt="" />
       </header>
+
+      <input type="text" onChange={e => setHandlerInput(e.target.value)} placeholder={mod ? 'Location' : 'ID'} />
+      <button className='search' onClick={() => setInputValue(handlerInput, setHandlerInput(''))}>Search</button>
+      <ul className='suggestionsearch'>
+        {
+          mod && handlerInput ? searchLocation.map(location => (
+            <li key={location.id} onClick={() => setInputValue(location.id, setHandlerInput(''))}>{location.name}</li>
+          )) : ''
+        }
+      </ul>
+      <button className='mod' onClick={() => setMod(!mod)}>{mod ? 'Location' : 'ID'}</button>
+
+      <Location location={location} />
+
+      <ul className='resident-info'>
+        {
+          location.residents?.map(resident => (
+            <ResidentInfo key={resident} info={resident} />
+          ))
+        }
+      </ul>
+
     </div>
   );
 }
