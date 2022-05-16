@@ -6,9 +6,10 @@ const useSuggestion = () => {
     const [searchLocation, setSearchLocation] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://rickandmortyapi.com/api/location/?name=${handlerInput}`)
-            .then(res => setSearchLocation(res.data?.results))
-            .catch(error => console.log('Location not found'));
+            axios.get(`https://rickandmortyapi.com/api/location/?name=${handlerInput}`)
+                .then(res => setSearchLocation(res.data?.results))
+                .catch(error => console.log('Location not found'));
+
     }, [handlerInput]);
 
     return { handlerInput, searchLocation, setHandlerInput };

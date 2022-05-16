@@ -12,10 +12,10 @@ function App() {
   const [inputValue, setInputValue] = useState('');
   const { location } = useAxiosLocation(inputValue);
 
-  const { handlerInput, searchLocation, setHandlerInput } = useSuggestion();
   const [mod, setMod] = useState(false);
+  const { handlerInput, searchLocation, setHandlerInput } = useSuggestion();
 
-  console.log(handlerInput);
+  console.log(searchLocation);
 
   return (
     <div className="App">
