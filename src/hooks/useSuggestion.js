@@ -10,6 +10,8 @@ const useSuggestion = (mod) => {
             axios.get(`https://rickandmortyapi.com/api/location/?name=${handlerInput}`)
                 .then(res => setSearchLocation(res.data?.results))
                 .catch(error => console.log('Location not found'));
+        } else {
+            return console.log('no se ejecuta useSuggestion')
         };
     }, [handlerInput, mod]);
 
