@@ -17,10 +17,22 @@ const useAnimationLoader = () => {
             }, 3000);
         } else {
             window.addEventListener('load', (e) => {
-                console.log('cargado', e);
+                setLoader(true);
+                setTimeout(() => {
+                    setHidden(true);
+                    setTimeout(() => {
+                        setIsLoad(true);
+                    }, 2000);
+                }, 3000);
             });
             return window.removeEventListener('load', (e) => {
-                console.log('cargado', e);
+                setLoader(true);
+                setTimeout(() => {
+                    setHidden(true);
+                    setTimeout(() => {
+                        setIsLoad(true);
+                    }, 2000);
+                }, 3000);
             });
         };
     }, [loader, isLoad]);
