@@ -15,6 +15,13 @@ const useAnimationLoader = () => {
                     setIsLoad(true);
                 }, 2000);
             }, 3000);
+        } else {
+            window.addEventListener('load', (e) => {
+                console.log('cargado', e);
+            });
+            return window.removeEventListener('load', (e) => {
+                console.log('cargado', e);
+            });
         };
     }, [loader, isLoad]);
 

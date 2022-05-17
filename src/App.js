@@ -15,8 +15,6 @@ function App() {
   const [mod, setMod] = useState(false);
   const { handlerInput, searchLocation, setHandlerInput } = useSuggestion(mod);
 
-  console.log(searchLocation);
-
   return (
     <div className="App">
 
