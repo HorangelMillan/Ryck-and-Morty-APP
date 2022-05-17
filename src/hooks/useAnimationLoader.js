@@ -6,23 +6,19 @@ const useAnimationLoader = () => {
     const [isLoad, setIsLoad] = useState(false);
     const [hidden, setHidden] = useState(false);
 
-    const hideenLoader = () => {
-        setTimeout(() => {
-            setIsLoad(true);
-        }, 2000);
-    }
-
     useEffect(() => {
         if (document.readyState === 'complete') {
             setLoader(true);
             setTimeout(() => {
                 setHidden(true);
-                hideenLoader();
+                setTimeout(() => {
+                    setIsLoad(true);
+                }, 2000);
             }, 3000);
         };
     }, [loader, isLoad]);
 
-    return {loader, isLoad, hidden}
+    return { loader, isLoad, hidden }
 
 };
 
