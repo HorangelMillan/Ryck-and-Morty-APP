@@ -11,7 +11,7 @@ const useSuggestion = (mod) => {
                 .then(res => setSearchLocation(res.data?.results))
                 .catch(error => console.log('Location not found'));
         } else {
-            return console.log('no se ejecuta useSuggestion')
+            return console.log('Suggestion not found')
         };
     }, [handlerInput, mod]);
 

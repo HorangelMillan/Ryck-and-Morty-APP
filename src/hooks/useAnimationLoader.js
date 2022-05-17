@@ -8,6 +8,7 @@ const useAnimationLoader = () => {
 
     useEffect(() => {
         if (document.readyState === 'complete') {
+            console.log('de readyState')
             setLoader(true);
             setTimeout(() => {
                 setHidden(true);
@@ -17,6 +18,7 @@ const useAnimationLoader = () => {
             }, 3000);
         } else {
             window.addEventListener('load', (e) => {
+                console.log('de addEventListener', e)
                 setLoader(true);
                 setTimeout(() => {
                     setHidden(true);
@@ -26,6 +28,7 @@ const useAnimationLoader = () => {
                 }, 3000);
             });
             return window.removeEventListener('load', (e) => {
+                console.log('de removeEventListener', e)
                 setLoader(true);
                 setTimeout(() => {
                     setHidden(true);
