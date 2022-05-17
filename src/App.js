@@ -13,7 +13,7 @@ function App() {
   const { location } = useAxiosLocation(inputValue);
 
   const [mod, setMod] = useState(false);
-  const { handlerInput, searchLocation, setHandlerInput } = useSuggestion();
+  const { handlerInput, searchLocation, setHandlerInput } = useSuggestion(mod);
 
   console.log(searchLocation);
 
